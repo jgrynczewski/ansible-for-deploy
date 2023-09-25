@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    - user:
+        name: '{{ item }}'
+        state: present
+      loop:
+        - joe
+        - george
+        - bill
+      become: true
+...

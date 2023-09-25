@@ -1,0 +1,8 @@
+---
+- hosts: centos1
+  tasks:
+    - package:
+        name: httpd
+        state: latest
+      become: true
+...

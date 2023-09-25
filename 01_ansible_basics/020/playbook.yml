@@ -1,0 +1,8 @@
+---
+- hosts: centos1
+  tasks:
+    - firewalld:
+        port: 80/tcp
+        state: enabled
+        permanent: yes
+      become: true

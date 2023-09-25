@@ -1,0 +1,8 @@
+---
+- hosts: ubuntu1
+  tasks:
+    - apt:
+        name: net-tools
+        state: latest
+      become: true
+...

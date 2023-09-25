@@ -1,0 +1,9 @@
+---
+- hosts: centos1
+  vars:
+    server_ip: 192.68.24.142
+  tasks:
+    - lineinfile:
+        path: /home/vagrant/test_directory/test_file.txt
+        line: server_ip
+        create: yes

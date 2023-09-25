@@ -1,0 +1,11 @@
+{# One line comment #}
+{#
+Multi line comment
+#}
+{% if ansible_user=="root" %}
+To jest centos1
+{% elif ansible_user=="vagrant" and ansible_os_family=="Debian" %}
+To jest ubuntu
+{% else %}
+To jest centos2
+{% endif %}

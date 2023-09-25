@@ -1,0 +1,9 @@
+---
+- hosts: centos1
+  vars:
+    server_ip: 192.68.24.142
+  tasks:
+    - lineinfile:
+        path: test_file.txt
+        line: 'nameserver {{ server_ip }}'
+        create: yes

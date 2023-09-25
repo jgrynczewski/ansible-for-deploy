@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  tasks:
+    - user:
+        name: joe
+        state: present
+      become: true
+    - user:
+        name: george
+        state: present
+      become: true
+    - user:
+        name: bill
+        state: present
+      become: true
+...

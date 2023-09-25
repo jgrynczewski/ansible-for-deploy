@@ -1,0 +1,6 @@
+---
+- hosts: centos1
+  tasks:
+    - debug:
+        msg: Playbook executed 
+...

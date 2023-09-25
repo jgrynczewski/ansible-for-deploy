@@ -1,0 +1,13 @@
+Najpierw inne moduły - te podstawowe, potem dopiero to - deploy strony statycznej
+Zgodnie z ansible executables:
+najpierw command
+potem ping
+potem inne podstawowe
+na koniec deploy strony 3/4 taski
+na centosa złożenie całości
+dodanie opisów name:
+
+package module
+
+na ubuntu httpd nie jest dostępny
+na centos1 ok

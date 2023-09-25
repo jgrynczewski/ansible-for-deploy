@@ -1,0 +1,7 @@
+---
+- hosts: centos1
+  tasks:
+    - copy:
+        src: index.html
+        dest: /var/www/html/index.html
+      become: true

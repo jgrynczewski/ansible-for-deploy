@@ -1,0 +1,10 @@
+---
+- hosts: centos1
+  tasks:
+    - file:
+        path: /home/vagrant/test_directory
+        state: directory
+
+    - file:
+       path: /home/vagrant/test_directory/test_file.txt
+       state: touch

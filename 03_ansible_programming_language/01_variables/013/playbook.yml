@@ -1,0 +1,5 @@
+---
+- hosts: centos2
+  tasks:
+    - debug:
+        msg: '{{ hostvars.centos1.ansible_facts }}'

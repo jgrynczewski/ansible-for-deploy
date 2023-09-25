@@ -1,0 +1,8 @@
+---
+- hosts: centos1
+  tasks:
+    - ping:
+        name: net-tools
+        state: latest
+      become: true
+...

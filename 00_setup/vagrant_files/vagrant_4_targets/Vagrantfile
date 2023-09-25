@@ -1,0 +1,86 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "ubuntu1" do |ubuntu1|
+    ubuntu1.vm.box = "generic/ubuntu2204"
+    ubuntu1.vm.hostname = 'ubuntu1'
+
+    ubuntu1.vm.network "private_network", ip: "34.116.188.51"
+    config.vm.network :forwarded_port, guest: 5432, host: 3000, auto_correct: true
+    ubuntu1.vm.network "public_network"
+
+    # set name of the virtualbox and change the default graphic's controller
+    ubuntu1.vm.provider :virtualbox do |vb|
+      vb.name = 'ubuntu1'
+      vb.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
+    end
+
+    # turn password authentication on (password authentication through ssh is disabled by default in centos)
+    ubuntu1.vm.provision "shell", inline: <<-SHELL
+       sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+       systemctl restart ssh.service
+    SHELL
+  end
+
+  config.vm.define "ubuntu2" do |ubuntu2|
+    ubuntu2.vm.box = "generic/ubuntu2204"
+    ubuntu2.vm.hostname = 'ubuntu2'
+
+    ubuntu2.vm.network "private_network", ip: "34.116.156.12"
+    ubuntu2.vm.network :forwarded_port, guest: 5432, host: 3001, auto_correct: true
+    ubuntu2.vm.network "public_network"
+
+    # set name of the virtualbox and change the default graphic's controller
+    ubuntu2.vm.provider :virtualbox do |vb|
+      vb.name = 'ubuntu2'
+      vb.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
+    end
+
+    # turn password authentication on (password authentication through ssh is disabled by default in centos)
+    ubuntu2.vm.provision "shell", inline: <<-SHELL
+       sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+       systemctl restart ssh.service
+    SHELL
+  end
+
+  config.vm.define "centos1" do |centos1|
+    centos1.vm.box = "centos/7"
+    centos1.vm.hostname = 'centos1'
+
+    centos1.vm.network "private_network", ip: "34.118.68.232"
+    centos1.vm.network "public_network"
+
+    # set name of the virtualbox and change the default graphic's controller
+    centos1.vm.provider :virtualbox do |vb|
+      vb.name = 'centos1'
+      vb.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
+    end
+
+    # turn password authentication on (password authentication through ssh is disabled by default in centos)
+    centos1.vm.provision "shell", inline: <<-SHELL
+       sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+       systemctl restart sshd.service
+    SHELL
+  end
+
+  config.vm.define "centos2" do |centos2|
+    centos2.vm.box = "centos/7"
+    centos2.vm.hostname = 'centos2'
+
+    centos2.vm.network "private_network", ip: "34.116.143.196"
+    centos2.vm.network "public_network"
+
+    # set name of the virtualbox and change the default graphic's controller
+    centos2.vm.provider :virtualbox do |vb|
+      vb.name = 'centos2'
+      vb.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
+    end
+
+    # turn password authentication on (password authentication through ssh is disabled by default in centos)
+    centos2.vm.provision "shell", inline: <<-SHELL
+       sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+       systemctl restart sshd.service
+    SHELL
+  end
+end

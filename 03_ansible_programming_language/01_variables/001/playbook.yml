@@ -1,0 +1,7 @@
+---
+- hosts: centos1
+  tasks:
+    - lineinfile:
+        path: /home/vagrant/test_directory/test_file.txt
+        line: test_line
+        create: yes

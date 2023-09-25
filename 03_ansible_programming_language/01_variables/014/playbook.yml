@@ -1,0 +1,10 @@
+---
+- hosts: centos1
+  tasks:
+    - ping:
+
+
+- hosts: centos2
+  tasks:
+    - debug:
+        msg: '{{ hostvars.centos1.ansible_facts }}'

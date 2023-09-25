@@ -1,0 +1,12 @@
+---
+- hosts: all
+  vars:
+     dict:
+       fruit: apple
+       vegatable: carrot
+       meat: chicken
+  tasks:
+    - template:
+        src: example_template.j2
+        dest: result.txt
+...

@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - debug:
+        msg: >- 
+            {% if ansible_user=="root" %}
+            To jest centos1
+            {% else %}
+            To nie jest centos1
+            {% endif %}
+...
